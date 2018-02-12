@@ -263,7 +263,8 @@ class TypeConversionDispatcher(object):
             if self.default_converter:
                 converter_class = self.default_converter
             else:
-                raise NoSuchConverter
+                raise NoSuchConverter('No type converter available for {}'
+                                      .format(schema_type))
 
         converter = converter_class(self)
         converted = converter(schema_node)
