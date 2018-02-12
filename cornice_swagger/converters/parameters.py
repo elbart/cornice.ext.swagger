@@ -94,7 +94,8 @@ class ParameterConversionDispatcher(object):
 
         converter_class = self.converters.get(location)
         if converter_class is None:
-            raise NoSuchConverter()
+            raise NoSuchConverter('No parameter converter available for {}'
+                                  .format(location))
 
         converter = converter_class()
         converted = converter.convert(schema_node, self.definition_handler)
